@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us</title>
+  <link rel="icon" type="image/png" href="icon_title.png" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #004d99;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.75rem;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .abstract-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #004d99;
+      margin-bottom: 0.5rem;
+    }
+
+    .abstract {
+      background-color: #ffffff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dev-image-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .dev-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+    }
+
+    .img-size-label {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1.2rem;
+      background-color: #004d99;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #003366;
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      padding-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header><strong>ABOUT US</strong></header>
+
+  <main>
+    <div class="abstract-title">Abstract</div>
+
+    <section class="abstract">
+      <p>
+        This project aims to develop a real-time flood monitoring system using IoT technologies such as ESP32,
+        ultrasonic sensors, GSM modules, and cloud-based data visualization through ThingSpeak. The system
+        is designed to provide timely alerts via SMS and web-based dashboards to help residents and local
+        authorities prepare for rising water levels. The integration of prediction models and historical data
+        analysis enhances the accuracy and reliability of flood detection, ultimately contributing to disaster
+        preparedness and community safety.
+      </p>
+    </section>
+
+    <div class="dev-image-container">
+      <img src="IMG-DEV.png" alt="Developer Image" class="dev-image" />
+      <a href="index.html" class="back-button">Back to Home</a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Flood Monitoring System | Powered by ThingSpeak
+  </footer>
+
+</body>
+</html>
