@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us</title>
+  <link rel="icon" type="image/png" href="icon_title.png" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #004d99;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.75rem;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .abstract-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #004d99;
+      margin-bottom: 0.5rem;
+    }
+
+    .abstract {
+      background-color: #ffffff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dev-image-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .dev-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+    }
+
+    .img-size-label {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1.2rem;
+      background-color: #004d99;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #003366;
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      padding-bottom: 1rem;
+    }
+
+    .abstract p {
+  text-align: justify;
+}
+  </style>
+</head>
+<body>
+
+  <header><strong>ABOUT US</strong></header>
+
+  <main>
+    <div class="abstract-title">Abstract</div>
+
+    <section class="abstract" style="text-align: justify;">
+      <p>
+        This projects presents the design and evaluation of a solar-powered, cost-efficient flood monitoring and early warning system utilizing Internet of Things (IoT) technologies. Aimed at addressing the shortcomings of traditional flood detection systems such as delayed alerts, lack of real-time data, and unreliable power sources the system integrates an ESP32 microcontroller, ultrasonic sensors, GSM communication, and the ThingSpeak platform for real-time environmental data collection and visualization. 
+        The primary objective was to build a wireless sensor network capable of detecting changes in water level, analyzing the data through a decision tree algorithm, and sending SMS alerts to at-risk communities. The methodology followed a structured process involving environmental parameter identification, sensor calibration, hardware-software integration, solar energy application, and multi-phase testing in both controlled and actual flood-prone environments. 
+        A rate of change formula was applied to assess rapid fluctuations in water levels, enhancing the predictive capacity of the system. Results showed that the sensors consistently measured water levels with minimal error, and the system successfully delivered timely alerts, even during simulated power outages. Feedback from community members confirmed the system's usability and effectiveness. Overall, the study demonstrates that integrating wireless sensor networks with IoT platforms and renewable energy sources provides a reliable and scalable solution for improving flood preparedness. 
+        It offers significant value to local government units and vulnerable communities by supporting proactive disaster response and promoting resilience against the impacts of flooding.
+      </p>
+    </section>
+
+    <div class="dev-image-container">
+      <img src="IMG-DEV.png" alt="Developer Image" class="dev-image" />
+      <a href="index.html" class="back-button">Back to Home</a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Flood Monitoring System | Powered by ThingSpeak
+  </footer>
+
+</body>
+</html>

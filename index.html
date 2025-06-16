@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flood Monitoring Dashboard</title>
+  <link rel="icon" type="image/png" href="icon_title.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue-600: #2563eb;
+      --blue-300: #60a5fa;
+      --gray-100: #f3f4f6;
+      --gray-700: #374151;
+      --white: #ffffff;
+      --radius: 0.5rem;
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--white);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #pst-time-box {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: #4b5568;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      box-shadow: var(--shadow-md);
+      z-index: 1000;
+    }
+
+    #intro {
+      background: linear-gradient(to right, #2563eb, #004d99);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    #intro h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    #intro p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    #intro button {
+      background-color: white;
+      color: var(--blue-600);
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #intro button:hover {
+      background-color: var(--blue-300);
+      color: white;
+    }
+
+    #features {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 4rem 1rem;
+      flex-wrap: wrap;
+      background: var(--white);
+    }
+
+    .feature-box {
+      background: var(--gray-100);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      flex: 1 1 300px;
+      max-width: 350px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 77, 153, 0.2);
+    }
+
+    .feature-box h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--blue-600);
+      margin-bottom: 1rem;
+    }
+
+    .feature-box p {
+      font-size: 1rem;
+      color: var(--gray-700);
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-box button {
+      background-color: var(--blue-600);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .feature-box button:hover {
+      background-color: var(--blue-300);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      #intro {
+        padding: 2rem 1rem;
+      }
+
+      #intro h1 {
+        font-size: 1.5rem;
+      }
+
+      #intro p {
+        font-size: 1rem;
+      }
+
+      .feature-box {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+
+      #features {
+        gap: 1rem;
+        padding: 2rem 1rem;
+      }
+
+      #pst-time-box {
+        font-size: 0.75rem;
+        padding: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Time and Date Box -->
+  <div id="pst-time-box">
+    <div id="current-date">Date loading...</div>
+    <div id="current-time">Time loading...</div>
+  </div>
+
+  <main>
+    <section id="intro" aria-label="Introduction">
+      <h1>Real-Time Flood Monitoring and Alert System through the Integration of Wireless Sensor Network and IoT Platform using ESP32 and ThingSpeak</h1>
+      <p>Stay safe and informed with real-time flood updates and essential guidance.</p>
+      <button onclick="location.href='nodes.html'">Proceed</button>
+    </section>
+
+    <!-- Three horizontal containers -->
+    <section id="features" aria-label="More Information">
+      <div class="feature-box">
+        <h3>What to Do / Precautions</h3>
+        <p>Learn safety tips and measures to follow before, during, and after flooding events.</p>
+        <button onclick="location.href='precautions.html'">View</button>
+      </div>
+      <div class="feature-box">
+        <h3>Emergency Contacts</h3>
+        <p>Access a list of emergency hotlines and important local authorities you can contact.</p>
+        <button onclick="location.href='contacts.html'">View</button>
+      </div>
+      <div class="feature-box">
+        <h3>About us</h3>
+        <p>Meet the team behind the system and see their contributions to this project.</p>
+        <button onclick="location.href='AboutUs.html'">View</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function updatePSTClock() {
+      const now = new Date();
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const phTime = new Date(utc + (3600000 * 8));
+
+      const date = phTime.toLocaleDateString('en-PH', {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+
+      const time = phTime.toLocaleTimeString('en-PH', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+
+      document.getElementById('current-date').textContent = date;
+      document.getElementById('current-time').textContent = time;
+    }
+
+    setInterval(updatePSTClock, 1000);
+    updatePSTClock();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emergency Contacts</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue-600: #2563eb;
+      --blue-300: #60a5fa;
+      --gray-100: #f3f4f6;
+      --gray-700: #374151;
+      --white: #ffffff;
+      --radius: 0.5rem;
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--gray-100);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    header {
+      background-color: var(--blue-600);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background-color: white;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+    }
+
+    h2 {
+      color: var(--blue-600);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-entry {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background-color: var(--gray-100);
+      border-left: 4px solid var(--blue-300);
+      border-radius: var(--radius);
+    }
+
+    .contact-entry h3 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.1rem;
+      color: var(--gray-700);
+    }
+
+    .contact-entry p {
+      margin: 0.2rem 0;
+      color: var(--gray-700);
+    }
+
+    .emoji {
+      margin-right: 0.5rem;
+    }
+
+        .back-button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1.2rem;
+      background-color: #004d99;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #003366;
+    }
+  </style>
+</head>
+<body>
+
+      <header>
+          <a href="index.html" style="color: white; text-decoration: none;">
+         <h1><i class="fas fa-water"></i>📞 Emergency Contacts</h1>
+  </a>
+  </header>
+
+  <div class="container">
+    <h2>🌪️ Natural Disasters and Other Emergencies</h2>
+    <p>For natural disasters and emergencies, contact the following numbers:</p>
+
+    <div class="contact-entry">
+      <h3>🚨 National Emergency Hotline</h3>
+      <p>911</p>
+    </div>
+
+    <div class="contact-entry">
+      <h3❤️>🚑 Philippine Red Cross Hotline</h3>
+      <p>143</p>
+      <p>(02) 8790-2300</p>
+    </div>
+
+    <div class="contact-entry">
+      <h3>⚠️ NDRRMC (National Disaster Risk Reduction and Management Council)</h3>
+      <p>(02) 8911-5061 to 65 Local 100</p>
+      <p>(02) 8421-1918</p>
+      <p>(02) 8913-2786</p>
+    </div>
+
+    <div class="contact-entry">
+      <h3>🌤️ PAGASA (Philippine Atmospheric, Geophysical, and Astronomical Services Administration)</h3>
+      <p>(02) 8284-0800</p>
+    </div>
+
+    <div class="contact-entry">
+      <h3>🚓 MMDA (Metro Manila Development Authority)</h3>
+      <p>136</p>
+      <p>(02) 8898-4200</p>
+    </div>
+
+        <div>       <a href="index.html" class="back-button">Back to Home</a></div>
+  </div>
+
+</body>
+</html>
