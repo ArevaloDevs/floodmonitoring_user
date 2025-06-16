@@ -37,12 +37,11 @@ JavaScript (for dynamic elements like live time display)
 Web Developer - Mark Joseph Arevalo
 
 Prototype Developers
-
-Mark Joseph Arevalo
-Jon Robert De Pedro
-Ruzzle Gutierrez
-John Paul Romez
-Peter Paul Montecillo
+- Mark Joseph Arevalo
+- Jon Robert De Pedro
+- Ruzzle Gutierrez
+- John Paul Romez
+- Peter Paul Montecillo
 
 📜 License
 This project is for educational purposes only. Feel free to modify and enhance it for your own use.
