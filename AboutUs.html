@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us</title>
+  <link rel="icon" type="image/png" href="icon_title.png" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #004d99;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.75rem;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .abstract-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #004d99;
+      margin-bottom: 0.5rem;
+    }
+
+    .abstract {
+      background-color: #ffffff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .abstract p {
+      text-align: justify;
+    }
+
+    .dev-image-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .dev-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+    }
+
+    .button-container {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .back-button {
+      padding: 0.5rem 1.2rem;
+      background-color: #004d99;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #003366;
+    }
+
+    .github-link {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      transition: transform 0.3s ease;
+    }
+
+    .github-link:hover {
+      transform: scale(1.1);
+    }
+
+    .github-icon {
+      fill: #004d99;
+      width: 32px;
+      height: 32px;
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      padding-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header><strong>ABOUT US</strong></header>
+
+  <main>
+    <div class="abstract-title">Abstract</div>
+
+    <section class="abstract">
+      <p>
+        This project presents the design and evaluation of a solar-powered, cost-efficient flood monitoring and early warning system utilizing Internet of Things (IoT) technologies. Aimed at addressing the shortcomings of traditional flood detection systems such as delayed alerts, lack of real-time data, and unreliable power sources, the system integrates an ESP32 microcontroller, ultrasonic sensors, GSM communication, and the ThingSpeak platform for real-time environmental data collection and visualization. 
+        The primary objective was to build a wireless sensor network capable of detecting changes in water level, analyzing the data through a decision tree algorithm, and sending SMS alerts to at-risk communities. The methodology followed a structured process involving environmental parameter identification, sensor calibration, hardware-software integration, solar energy application, and multi-phase testing in both controlled and actual flood-prone environments. 
+        A rate of change formula was applied to assess rapid fluctuations in water levels, enhancing the predictive capacity of the system. Results showed that the sensors consistently measured water levels with minimal error, and the system successfully delivered timely alerts, even during simulated power outages. Feedback from community members confirmed the system's usability and effectiveness. Overall, the study demonstrates that integrating wireless sensor networks with IoT platforms and renewable energy sources provides a reliable and scalable solution for improving flood preparedness. 
+        It offers significant value to local government units and vulnerable communities by supporting proactive disaster response and promoting resilience against the impacts of flooding.
+      </p>
+    </section>
+
+    <div class="dev-image-container">
+      <img src="IMG-DEV.png" alt="Developer Image" class="dev-image" />
+
+      <div class="button-container">
+        <a href="index.html" class="back-button">Back to Home</a>
+        <a href="https://github.com/ArevaloDevs" target="_blank" class="github-link" aria-label="GitHub">
+          <svg class="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0.297c-6.63 0-12 5.373-12 12 0 5.303 
+                     3.438 9.8 8.205 11.385 0.6 0.113 0.82-0.258 
+                     0.82-0.577 0-0.285-0.01-1.04-0.015-2.04-3.338 
+                     0.724-4.042-1.61-4.042-1.61-0.546-1.385-1.333-1.754-1.333-1.754-1.09-0.745 
+                     0.084-0.729 0.084-0.729 1.205 0.084 1.84 1.236 
+                     1.84 1.236 1.07 1.835 2.809 1.305 3.495 
+                     0.998 0.108-0.775 0.418-1.305 0.762-1.605-2.665-0.305-5.466-1.332-5.466-5.93 
+                     0-1.31 0.467-2.38 1.235-3.22-0.135-0.303-0.54-1.523 
+                     0.105-3.176 0 0 1.005-0.322 3.3 1.23 0.96-0.267 
+                     1.98-0.399 3-0.405 1.02 0.006 2.04 0.138 
+                     3 0.405 2.28-1.552 3.285-1.23 3.285-1.23 0.645 
+                     1.653 0.24 2.873 0.12 3.176 0.765 0.84 
+                     1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 
+                     5.92 0.42 0.36 0.81 1.096 0.81 2.22 0 
+                     1.606-0.015 2.896-0.015 3.286 0 0.315 0.21 0.69 
+                     0.825 0.57 4.77-1.585 8.2-6.082 
+                     8.2-11.385 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Flood Monitoring System | Powered by ThingSpeak
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flood Monitoring Dashboard</title>
+  <link rel="icon" type="image/png" href="icon_title.png" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f4f8;
+    }
+    header {
+      background-color: #2563eb;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    .dashboard {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .node-container {
+      flex: 1;
+      min-width: 300px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 1rem;
+    }
+    .chart-container iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+    .prediction-box {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .view-link {
+      display: block;
+      margin-top: 0.5rem;
+      text-align: center;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .view-link:hover {
+      text-decoration: underline;
+    }
+    .download-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .download-buttons button {
+      padding: 0.5rem 1rem;
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .download-buttons button:hover {
+      background-color: #008ecc;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #e0e0e0;
+      font-size: 0.9rem;
+    }
+    #pst-time-box {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: #4b5568;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>FLOOD MONITORING DASHBOARD</strong>
+  </header>
+
+  <div id="pst-time-box">
+    <div id="current-date">Date loading...</div>
+    <div id="current-time">Time loading...</div>
+  </div>
+
+  <div class="dashboard">
+    <div class="node-container">
+      <h3>Node 1</h3>
+      <div class="chart-container">
+        <iframe src="https://thingspeak.com/channels/2887499/charts/1?bgcolor=%23ffffff&color=%23ff0000&dynamic=true&type=line"></iframe>
+      </div>
+      <div id="prediction1" class="prediction-box">Loading...</div>
+      <a href="https://thingspeak.com/channels/2887499" target="_blank" class="view-link">View on ThingSpeak</a>
+    </div>
+    <div class="node-container">
+      <h3>Node 2</h3>
+      <div class="chart-container">
+        <iframe src="https://thingspeak.com/channels/2952189/charts/1?bgcolor=%23ffffff&color=%23ff0000&dynamic=true&type=line"></iframe>
+      </div>
+      <div id="prediction2" class="prediction-box">Loading...</div>
+      <a href="https://thingspeak.com/channels/2952189" target="_blank" class="view-link">View on ThingSpeak</a>
+    </div>
+    <div class="node-container">
+      <h3>Node 3</h3>
+      <div class="chart-container">
+        <iframe src="https://thingspeak.com/channels/2952294/charts/1?bgcolor=%23ffffff&color=%23ff0000&dynamic=true&type=line"></iframe>
+      </div>
+      <div id="prediction3" class="prediction-box">Loading...</div>
+      <a href="https://thingspeak.com/channels/2952294" target="_blank" class="view-link">View on ThingSpeak</a>
+    </div>
+  </div>
+
+  <div class="download-buttons">
+    <button onclick="downloadExcel()">Download All as Excel</button>
+    <button onclick="downloadPDF()">Download All as PDF</button>
+    <button onclick="window.location.href='index.html'">Back to Home</button>
+  </div>
+
+  <footer>
+    &copy; 2025 Flood Monitoring System | Powered by ThingSpeak
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const nodes = [
+      { id: 1, channel: '2887499', key: 'YOUR_API_KEY_1' },
+      { id: 2, channel: '2952189', key: '0U4S8QMRAZIQH1SW' },
+      { id: 3, channel: '2952294', key: '23HH9YX2TJIUBJGX' },
+    ];
+
+    const allNodeData = {};
+    const predictions = {};
+
+    async function fetchNodeData(node) {
+      const res = await fetch(`https://api.thingspeak.com/channels/${node.channel}/feeds.json?results=30&api_key=${node.key}`);
+      const data = await res.json();
+      const feeds = data.feeds;
+      let total = 0;
+      let count = 0;
+      const nodeData = [];
+
+      feeds.forEach(feed => {
+        const dateObj = new Date(feed.created_at);
+        const dateTime = `${dateObj.toLocaleDateString()} ${dateObj.toLocaleTimeString()}`;
+        const distance = parseFloat(feed.field1);
+        if (!isNaN(distance)) {
+          total += distance;
+          count++;
+          nodeData.push({ datetime: dateTime, distance });
+        }
+      });
+
+      allNodeData[`Node ${node.id}`] = nodeData;
+
+      const avg = (total / count).toFixed(2);
+      const percent = ((avg / 100) * 100).toFixed(1);
+      predictions[`Node ${node.id}`] = `Prediction: ${avg} cm (${percent}%)\n${percent >= 15 ? 'POSSIBLE FLOODING' : 'NO FLOODING PREDICTED'}`;
+
+      const predEl = document.getElementById(`prediction${node.id}`);
+      predEl.innerText = predictions[`Node ${node.id}`];
+
+      if (percent >= 15) {
+        predEl.style.background = "#f8d7da";
+        predEl.style.color = "#721c24";
+      } else {
+        predEl.style.background = "#d4edda";
+        predEl.style.color = "#155724";
+      }
+    }
+
+    function downloadExcel() {
+      const wb = XLSX.utils.book_new();
+      Object.entries(allNodeData).forEach(([node, data]) => {
+        const sheetData = [['WATER LEVEL DATA FOR EARLY WARNING PREDICTION'], [`${node.toUpperCase()} (CHANNEL ID: ${getChannelID(node)})`], ['DATE AND TIME', 'DISTANCE']];
+        data.forEach(row => {
+          sheetData.push([row.datetime, `${row.distance.toFixed(2)} cm`]);
+        });
+        sheetData.push(['', predictions[node]]);
+        const ws = XLSX.utils.aoa_to_sheet(sheetData);
+        XLSX.utils.book_append_sheet(wb, ws, node);
+      });
+      XLSX.writeFile(wb, "combined_flood_data.xlsx");
+    }
+
+    function downloadPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      Object.entries(allNodeData).forEach(([node, data], index) => {
+        if (index !== 0) doc.addPage();
+        let y = 20;
+        doc.setFontSize(14);
+        doc.text("WATER LEVEL DATA FOR EARLY WARNING PREDICTION", 20, y);
+        y += 10;
+        doc.setFontSize(12);
+        doc.text(`${node.toUpperCase()} (CHANNEL ID: ${getChannelID(node)})`, 20, y);
+        y += 10;
+        doc.setFontSize(10);
+        doc.text("DATE AND TIME                | DISTANCE", 20, y);
+        y += 6;
+        data.forEach(row => {
+          if (y > 270) { doc.addPage(); y = 20; }
+          doc.text(`${row.datetime} | ${row.distance.toFixed(2)} cm`, 20, y);
+          y += 5;
+        });
+        y += 10;
+        doc.text(predictions[node], 20, y);
+      });
+      doc.save("combined_flood_data.pdf");
+    }
+
+    function getChannelID(nodeName) {
+      const nodeId = nodeName.split(' ')[1];
+      return nodes.find(n => n.id == nodeId).channel;
+    }
+
+    function updatePSTClock() {
+      const now = new Date();
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const phTime = new Date(utc + (3600000 * 8));
+      const date = phTime.toLocaleDateString('en-PH', {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+      const time = phTime.toLocaleTimeString('en-PH', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+      document.getElementById('current-date').textContent = date;
+      document.getElementById('current-time').textContent = time;
+    }
+
+    setInterval(updatePSTClock, 1000);
+    updatePSTClock();
+    nodes.forEach(fetchNodeData);
+  </script>
+</body>
+</html>
